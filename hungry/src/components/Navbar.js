@@ -33,17 +33,8 @@ const Navz = () => {
           </li>
 
           <li>
-            <a href="#">Search Recipe...
-              <span class="arrow">&#x25BC;</span>
-            </a>
-            <ul class="submenu">
-              <li>
-                <Link to = ''>By Cusine Type</Link>
-              </li>
-              <li>
-                <Link to = ''>By Food Type</Link>
-              </li>
-            </ul>
+            <Link to = '/SeachRecpies' href="#">Search Recipe
+            </Link>
           </li>
           <li>
             <a href="#">⭐Favorites</a>
