@@ -1,29 +1,18 @@
-// import SignIn from './components/Login/SignIn';
-import Display from './Display/Display';
-import Genre from './GenreSelector/Genre';
-import Recipe from './GenreSelector/RandomRecipe'
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Source from './Source';
+import SignIn from './Login/SignIn'
+import firebase from './Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const MainPage = () => {
-    return (  
-        <Router>
-            <Switch>
+    const auth = firebase.auth();  
+    const [user] = useAuthState(auth);
 
-                <Route exact path = '/'>
-                    <Display/>
-                </Route>
+    return ( 
+        <>
+            {user ? <><Source /></> : <><SignIn /></>}
+        </>
+     )
 
-                <Route exact path = '/RandomGenre'>
-                    <Genre/>
-                </Route>
-
-                <Route exact path = '/RandomRecipe'>
-                    <Recipe/>
-                </Route>
-
-            </Switch>
-        </Router>
-    );
 }
  
 export default MainPage;
