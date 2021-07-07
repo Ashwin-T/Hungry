@@ -23,16 +23,16 @@ const Genre = () => {
 
     return ( 
     <div className="flexBoxContainer column" >
-        <div style = {{padding: '2%'}}>
-            <h1 style = {{fontSize: '5rem'}}>{genre}</h1>
+        <div style = {{paddingTop: '2%'}}>
+            <h1 style = {{fontSize: '5vw'}}>{genre}</h1>
         </div>
         <div className="flexBoxContainer" style = {{padding: '5%'}}>
-            <button onClick={()=> generateRandomGenre()} className = 'buttonz'><span>🥖Click Here for Random Cuisine Type🥖</span></button> 
+            <button onClick={()=> generateRandomGenre()} className = 'buttonz'><span>Click Here for Random Cuisine Type🥖</span></button> 
         </div>
 
         <div className="flexBoxContainer space">
-            <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Feel like ordering in? Click here to search Doordash!</span></button>
-            <button onClick={()=>searchMaps()} className = 'buttonz'><span>Feel like going out? Click here to search Google Maps!</span></button>
+            <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Staying in? Click here to search Doordash!</span></button>
+            <button onClick={()=>searchMaps()} className = 'buttonz'><span>Going out? Click here to search GMaps!</span></button>
         </div>
       
 

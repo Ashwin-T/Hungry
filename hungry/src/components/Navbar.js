@@ -1,8 +1,16 @@
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import firebase from 'firebase';
+
 
 const Navz = () => {
-
-
+  
+  let history = useHistory();
+  const auth = firebase.auth();
+    const SignOut = () => {
+      history.push("/");
+      auth.signOut();
+    }
+     
     return (  
 
         <nav id="main-nav">
@@ -35,13 +43,13 @@ const Navz = () => {
               <li>
                 <Link to = ''>By Food Type</Link>
               </li>
-              <li>
-                <Link to = ''>By Main Ingredient</Link>
-              </li>
             </ul>
           </li>
           <li>
             <a href="#">⭐Favorites</a>
+          </li>
+          <li>
+            <a onClick={()=>SignOut()}>SignOut</a>
           </li>
         </ul>
       </nav>
