@@ -14,7 +14,7 @@ const Find = () => {
 
     const ShowPreview = () =>{
         return(
-        <>   
+        <div>   
             <div className="flexBoxContainer column"> 
                 <h1>Search Recipes By...</h1>
             </div>
@@ -30,17 +30,17 @@ const Find = () => {
                 
                 </form>            
             </div>
-        </>
+        </div>
         );
     }
-    const Meal = (props) => {
+    const MealShowCase = (props) => {
         return ( <div> {props.id}</div>);
     }
      
        
     return ( 
     <>  
-       {showMeal ?<Meal id = {id}/>:  <ShowPreview/>}
+       {showMeal ?<MealShowCase id = {id}/>:  <ShowPreview/>}
     </>
      );
 }

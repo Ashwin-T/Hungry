@@ -33,7 +33,7 @@ const Navz = () => {
           </li>
 
           <li>
-            <Link to = '/SeachRecpies' href="#">Search Recipe
+            <Link to = '/SeachRecpie'>Search Recipe
             </Link>
           </li>
           <li>

@@ -1,7 +1,7 @@
 import Display from './Display/Display';
 import Genre from './GenreSelector/Genre';
 import Recipe from './GenreSelector/RandomRecipe'
-import Find from './Find/Find'
+import Find from './Find'
 import Navz from './Navbar';
 
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -15,16 +15,16 @@ const Source = () => {
                     <Display/>
                 </Route>
 
-                <Route exact path = '/SeachRecpies'>
-                    <Find/>
-                </Route>
-
                 <Route exact path = '/RandomGenre'>
                     <Genre/>
                 </Route>
 
                 <Route exact path = '/RandomRecipe'>
                     <Recipe/>
+                </Route>
+
+                <Route exact path = '/SeachRecpie'>
+                    <Find/>
                 </Route>
 
             </Switch>
