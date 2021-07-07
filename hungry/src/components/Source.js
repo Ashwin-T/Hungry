@@ -2,11 +2,13 @@
 import Display from './Display/Display';
 import Genre from './GenreSelector/Genre';
 import Recipe from './GenreSelector/RandomRecipe'
+import Navz from './Navbar';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 const Source = () => {
     return (  
         <Router>
+            <Navz/>
             <Switch>
 
                 <Route exact path = '/'>

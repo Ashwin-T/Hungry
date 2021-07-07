@@ -12,12 +12,15 @@ const Recipe = () => {
     }
     
     return (
-        <>
-            <button onClick={()=> ApiCall()}> Get Random Recipe 🍽️</button>             
-            <h1>{path.data.meals[0].strMeal}</h1>
-            <img src = {path.data.meals[0].strMealThumb}></img>
-
-        </>
+    <>
+        <div className="flexBoxContainer column" >
+             <div className="space" >
+                <button onClick={()=> ApiCall()} className = 'buttonz'> <span>Get Random Recipe 🍽️</span></button>  
+            </div>           
+        </div>
+        <h1>{path.data.meals[0].strMeal}</h1>
+        <img src = {path.data.meals[0].strMealThumb}></img>
+    </>
     );
 }
  

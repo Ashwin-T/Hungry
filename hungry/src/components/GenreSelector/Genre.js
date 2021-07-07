@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const Genre = () => {
-    const allGenre = ['Italian','Indian','Japanese','Korean','Mexican','Cajun','Thai','Greek','Chinese','Lebanese','Japanese', 'Fast Food', 'American', 'Moroccan', 'Mediterranean', 'French', 'Spanish', 'German', 'Vietnamese', 'Turkish', 'Pakastani', 'Chicken', 'Pizza'];
+    const allGenre = ['Italian','Indian','Japanese','Mexican','Korean','Mexican','Cajun','Thai','Greek','Chinese','Lebanese','Japanese', 'Fast Food', 'American', 'Moroccan', 'Mediterranean', 'French', 'Spanish', 'German', 'Vietnamese', 'Turkish', 'Pakastani', 'Chicken', 'Pizza'];
     const [genre, setGenre] = useState(null);
 
     const generateRandomGenre  = () =>{
@@ -22,15 +22,22 @@ const Genre = () => {
     }
 
     return ( 
-    <>
-        <h1>{genre}</h1>
-        
-        <button onClick={()=> generateRandomGenre()}>Click Here for Random Cuisine Genere</button> 
-        
-        <button onClick={()=>searchDoordash()}>Feel like ordering in? Click here to search doordash!</button>
-        <button onClick={()=>searchMaps()}>Feel like going out? Click here to search google maps!</button>
+    <div className="flexBoxContainer column" >
+        <div style = {{padding: '2%'}}>
+            <h1 style = {{fontSize: '5rem'}}>{genre}</h1>
+        </div>
+        <div className="flexBoxContainer" style = {{padding: '5%'}}>
+            <button onClick={()=> generateRandomGenre()} className = 'buttonz'><span>🥖Click Here for Random Cuisine Type🥖</span></button> 
+        </div>
 
-    </>
+        <div className="flexBoxContainer space">
+            <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Feel like ordering in? Click here to search Doordash!</span></button>
+            <button onClick={()=>searchMaps()} className = 'buttonz'><span>Feel like going out? Click here to search Google Maps!</span></button>
+        </div>
+      
+
+
+    </div>
 
 
     );
