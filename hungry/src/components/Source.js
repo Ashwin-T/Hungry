@@ -23,7 +23,7 @@ const Source = () => {
                     <Recipe/>
                 </Route>
 
-                <Route exact path = '/SeachRecpie'>
+                <Route exact path = '/SeachRecpie' >
                     <Find/>
                 </Route>
 
