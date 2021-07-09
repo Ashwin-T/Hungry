@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-
-const MealDisplayType = () => {
-    
-    const {mealType} = useParams();
+const MealDisplayTypeFood = () => {
+    const {mealFood} = useParams();
     const [path, setPath] = useState({data: {meals: [{strMealThumb: null}, {strMeal: null}, {idMeal: null}]}});
     const [mealz, setMealz] = useState([]);
 
-    const getAxios = async() => (axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealType}`))
+    const getAxios = async() => (axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealFood}`))
     
     const ApiCall = async() => {
         var myPath = (await getAxios());
@@ -31,7 +29,7 @@ const MealDisplayType = () => {
     return ( 
         
         <div>
-            <h3>Showing Recipes for: {mealType}</h3>
+            <h3>Showing Recipes for: {mealFood}</h3>
             {mealz.map((m) => (
                 <div>
                     <Link to = {`/Recipe/${m.strMeal}`} >
@@ -45,5 +43,4 @@ const MealDisplayType = () => {
 
         );
 }
- 
-export default MealDisplayType;
+export default MealDisplayTypeFood;

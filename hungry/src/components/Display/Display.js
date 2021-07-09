@@ -3,13 +3,13 @@ const Display = () => {
     
     return (  
     
-    <div className="flexBoxContainer">
-        <Link to = '/RandomGenre'>
+    <div className="flexBoxContainer column">
+        {/* <Link to = '/RandomGenre'>
             <button>Random Genre of Cuisine</button>   
         </Link>
         <Link to = '/RandomRecipe'>
             <button>Random Recipe</button>   
-        </Link>
+        </Link> */}
     </div>
 
     );
