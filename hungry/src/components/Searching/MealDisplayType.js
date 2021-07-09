@@ -18,15 +18,14 @@ const MealDisplayType = () => {
 
     const MealDisplay = () => {
         
-        useEffect(() => {
-            ApiCall();
-            var tempArray = [];
-            for (let i = 0; i < path.meals.length; i++) {
-                tempArray.push(path.meals[i])
-            }
-            setMeals(tempArray);
-        })
-        console.log(meals);
+        ApiCall();
+        var tempArray = [];
+        for (let i = 0; i < path.meals.length; i++) {
+            tempArray.push(path.meals[i])
+        }
+        setMeals(tempArray);
+
+        console.log(tempArray);
     }
      
     return ( 
