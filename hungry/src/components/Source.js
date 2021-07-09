@@ -1,8 +1,11 @@
 import Display from './Display/Display';
 import Genre from './GenreSelector/Genre';
 import Recipe from './GenreSelector/RandomRecipe'
-import Find from './Find'
+import Find from './Searching/Find'
+import MealDisplayType from './Searching/MealDisplayType'
+import MealDisplayTypeRecipe from './Searching/MealDisplayTypeRecipe'
 import Navz from './Navbar';
+
 
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -25,6 +28,14 @@ const Source = () => {
 
                 <Route exact path = '/SeachRecpie' >
                     <Find/>
+                </Route>
+
+                <Route exact path = '/SeachRecpie/:mealType' >
+                    <MealDisplayType/>
+                </Route>
+
+                <Route exact path = '/SeachRecpie/:mealType/:mealID' >
+                    <MealDisplayTypeRecipe/>
                 </Route>
 
             </Switch>
