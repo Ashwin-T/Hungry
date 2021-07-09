@@ -8,7 +8,6 @@ const MealDisplayType = () => {
     const {mealType} = useParams();
     const [path, setPath] = useState({});
     const [meals, setMeals] = useState([]);
-    const [loadingState, setloadingState] = useState(true);
 
     const getAxios = async() => (axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${mealType}`))
     
@@ -44,7 +43,6 @@ const MealDisplayType = () => {
     return ( 
         
         <div>
-            {loadingState ? <Loading/>: null}
             {/* <h3>Showing Recipes for: {mealType}</h3> */}
         </div>
 
