@@ -1,11 +1,14 @@
 import { useState } from 'react';
-
+import {useHistory} from 'react-router-dom'
 const Genre = () => {
     const allGenre = ['Italian','Indian','Japanese','Mexican','Korean','Mexican','Cajun','Thai','Greek','Chinese','Lebanese','Japanese', 'Fast Food', 'American', 'Moroccan', 'Mediterranean', 'French', 'Spanish', 'German', 'Vietnamese', 'Turkish', 'Pakastani', 'Chicken', 'Pizza'];
     const [genre, setGenre] = useState(null);
+    const history = useHistory();
+    const [clicked, setClicked] = useState(false);
 
     const generateRandomGenre  = () =>{
         setGenre(allGenre[(Math.floor(Math.random() * 22))]);
+        setClicked(true);
     }
     const searchMaps = ()=>{
         if (genre != null) {
@@ -20,6 +23,23 @@ const Genre = () => {
             window.open(url,'_blank');
         }
     }
+    const searchRecipe = () =>{
+        if (genre != null) {
+            history.push(`/SeachRecpie/${genre}`)
+        }
+    }
+
+    const Buttons = ()=>{
+        return(
+            <div className="flexBoxContainer space" style = {{marginTop: '5vh'}}>
+                <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Dining in? Click here to search Doordash!</span></button>
+                <button onClick={()=>searchMaps()} className = 'buttonz'style = {{marginLeft: '7vh'}}><span>Dining out? Click here to search GMaps!</span></button>
+                <button onClick={()=>searchRecipe()} className = 'buttonz' style = {{marginTop: '7vh'}}><span>Wanna make it? Click here to browse recipes!</span></button>
+            </div>
+        )
+    }
+
+
 
     return ( 
     <div className="flexBoxContainer column" >
@@ -30,10 +50,8 @@ const Genre = () => {
             <button onClick={()=> generateRandomGenre()} className = 'buttonz'><span>Click Here for Random Cuisine Type🥖</span></button> 
         </div>
 
-        <div className="flexBoxContainer space">
-            <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Staying in? Click here to search Doordash!</span></button>
-            <button onClick={()=>searchMaps()} className = 'buttonz'><span>Going out? Click here to search GMaps!</span></button>
-        </div>
+        {clicked ? <Buttons/> : null}
+      
       
 
 

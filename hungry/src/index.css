@@ -163,7 +163,7 @@ section {
 }
 
 .buttonz:hover span {
-  padding: 25px;
+  padding: 15px;
 }
 
 .buttonz :hover span:after {
@@ -211,7 +211,7 @@ h3{
 }
 
 .fav:hover span {
-  padding: 10px;
+  padding: 5px;
 }
 
 .fav :hover span:after {
@@ -235,7 +235,10 @@ h3{
 
 }
 .formz{
-  width: 25vw;
+  width: 32vw;
   height: 5vh;
   margin-top: 1.5vh;
+}
+.form{
+  margin-top: 10vh
 }

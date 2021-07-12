@@ -4,7 +4,7 @@ import Recipe from './GenreSelector/RandomRecipe'
 import Find from './Searching/Find'
 import MealDisplayType from './Searching/MealDisplayType'
 import MealDisplayFood from './Searching/MealDisplayFood'
-import Fav from './Fav';
+import Favorite from './Favorite';
 import RecipeFinder from './Recipe'
 import Navz from './Navbar';
 
@@ -19,6 +19,11 @@ const Source = () => {
                 <Route exact path = '/'>
                     <Display/>
                 </Route>
+               
+                <Route exact path = '/Favorites'>
+                    <Favorite/>
+                </Route>
+                
 
                 <Route exact path = '/RandomGenre'>
                     <Genre/>
@@ -28,6 +33,11 @@ const Source = () => {
                     <Recipe/>
                 </Route>
 
+                <Route exact path = '/Recipe/:mealName' >
+                    <RecipeFinder/>
+                </Route>
+
+
                 <Route exact path = '/SeachRecpie' >
                     <Find/>
                 </Route>
@@ -35,18 +45,11 @@ const Source = () => {
                 <Route exact path = '/SeachRecpie/:mealType' >
                     <MealDisplayType/>
                 </Route>
+                
                 <Route exact path = '/SeachRecpies/:mealFood' >
                     <MealDisplayFood/>
                 </Route>
-
-                <Route exact path = '/Recipe/:mealName' >
-                    <RecipeFinder/>
-                </Route>
-
-                <Route exact path = 'Favorites'>
-                    <Fav/>
-                </Route>
-                
+               
             </Switch>
         </Router>
     );

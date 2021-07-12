@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios'; 
-import firebase from 'firebase';
+import firebase from './Firebase';
 import { useParams } from 'react-router';
 
 const RecipeFinder = () => {
@@ -29,6 +29,8 @@ const RecipeFinder = () => {
         if (path.data.meals[0].strMeal != null){
             db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
                 id: path.data.meals[0].idMeal,
+                name: path.data.meals[0].strMeal,
+                photo: path.data.meals[0].strMealThumb
             });
         } 
     }

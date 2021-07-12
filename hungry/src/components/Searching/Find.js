@@ -25,10 +25,7 @@ const Find = () => {
     <>  
         <div className="flexBoxContainer column"> 
             <h1>Search Recipes By...</h1>
-        </div>
-
-        <div className="flexBoxContainer " style = {{justifyContent: 'space-between'}}>
-            <form>
+            <form className="form">
                 <label >
                     <h2 style = {{color: '#FF6D00'}}>Cuisine Type</h2>
                 </label>
@@ -36,17 +33,10 @@ const Find = () => {
                 <input className = 'formz' type = 'text' value= {id} onChange = {(e)=> setId(e.target.value)} placeholder = 'Indian, Chinese, Mexican...'/>
 
                 <button onClick = {()=>handleSubmit(`${id}`)} className="fav" style = {{  marginLeft: '0.75vw'}}>Submit</button>
-                
+                    
             </form>
-                     
-        </div>
-
-        <div className="flexBoxContainer column"> 
-            <h1> OR </h1>
-        </div>
-        
-        <div className="flexBoxContainer " style = {{justifyContent: 'space-between'}}>
-            <form>
+            
+            <form className="form">
                 <label >
                     <h2 style = {{color: '#FF6D00'}}>Food Type</h2>
                 </label>
@@ -54,7 +44,7 @@ const Find = () => {
                 <input className = 'formz' type = 'text' value= {id2} onChange = {(e)=> setId2(e.target.value)} placeholder = 'Seafood, Vegan, Chicken, Starter...'/>
 
                 <button onClick = {()=>handleSubmit2(`${id2}`)} className="fav" style = {{  marginLeft: '0.75vw'}}>Submit</button>
-                
+
             </form> 
         </div>
     </>

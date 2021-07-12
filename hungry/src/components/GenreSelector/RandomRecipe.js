@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import axios from 'axios'; 
-import firebase from 'firebase';
+import firebase from '../Firebase';
 
 const Recipe = () => {
     
@@ -25,6 +25,7 @@ const Recipe = () => {
         if (path.data.meals[0].strMeal != null){
             db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
                 id: path.data.meals[0].idMeal,
+                name: path.data.meals[0].strMeal
             });
         } 
     }
