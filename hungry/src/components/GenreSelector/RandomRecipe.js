@@ -145,7 +145,7 @@ const Recipe = () => {
             }
         })
         return (  
-            <button className = 'fav' onClick = {()=>handleFav()}><span>Favorite</span></button>
+            <button className = 'fav' onClick = {()=>handleFav()}><span>{title}</span></button>
         );
     }
 

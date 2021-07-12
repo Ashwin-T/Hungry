@@ -1,0 +1,22 @@
+{
+"name": "hungry",
+"version": "1.0.0",
+"description": "Hungry yet cant decide what to eat. 'Hungry?©' can help you out. With the vast amount of features it allows you to choose a random cuisine, go out, order in, or make it yourself with our large collection of recipes.",
+"main": "backend.js",
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "node backend.js" 
+},
+"keywords": [
+  "example",
+  "heroku"
+],
+"author": "Ashwin T",
+"license": "MIT",
+"dependencies": {
+  "express": "^4.17.1"
+},
+"engines": {
+  "node": "15.x"
+}
+}
