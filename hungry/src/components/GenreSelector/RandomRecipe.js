@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios'; 
 import firebase from '../Firebase';
+import {useHistory} from 'react-router-dom'
 
 const Recipe = () => {
     
     const db = firebase.firestore();
     const auth = firebase.auth();
+    let history = useHistory();
     const getAxios = async() => (axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`))
 
     const [path, setPath] =  useState({data: {meals: [{strMealThumb: null}, {strMeal: null}]}}); //dummy values
@@ -138,6 +140,9 @@ const Recipe = () => {
         );
     }
     const FavButton = () => {
+        setTitle('Favorite');
+        setFavoriteBoolean(false);
+
         fav.map((favz) => {
             if(favz.data().name === path.data.meals[0].strMeal){
                 setTitle('Unfavorite')
