@@ -7,6 +7,7 @@ const MealDisplayTypeFood = () => {
     const {mealFood} = useParams();
     const [path, setPath] = useState({data: {meals: [{strMealThumb: null}, {strMeal: null}, {idMeal: null}]}});
     const [mealz, setMealz] = useState([]);
+    const [empty, setEmpty] = useState(false);
 
     const getAxios = async() => (axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealFood}`))
     
@@ -14,10 +15,15 @@ const MealDisplayTypeFood = () => {
         var myPath = (await getAxios());
         setPath(myPath);
         var tempArray = [];
-        for (let i = 0; i < myPath.data.meals.length; i++) {
-            tempArray.push(myPath.data.meals[i])
+        if (myPath.data.meals !== null){
+            for (let i = 0; i < myPath.data.meals.length; i++) {
+                tempArray.push(myPath.data.meals[i])
+            }
+            setEmpty(false);
         }
-
+        else{
+            setEmpty(true);
+        }
         const mealArray = tempArray;
         setMealz(mealArray); 
     }
@@ -26,23 +32,44 @@ const MealDisplayTypeFood = () => {
         ApiCall();
     }, []);
 
-    return ( 
-        
-        <div>
-            <div classname = 'flexBoxContainer'>
-                <h3 className = 'columnz'>Showing Recipes for: {mealFood}</h3>
+    const TotalResults = ()=>{
+        return(
+            <div>
+                <div classname = 'flexBoxContainer'>
+                    <h3 className = 'columnz'>Showing Recipes for: {mealFood}</h3>
+                </div>
+                <div classname  = 'flexBoxContainer column' >
+                    {mealz.map((m) => (
+                        <Link to = {`/Recipe/${m.strMeal}`} >
+                            <img className = 'recipeItem' src = {m.strMealThumb}></img>
+                        </Link>   
+                    ))}
+                </div>
+            
             </div>
-            <div classname  = 'flexBoxContainer column' >
-                {mealz.map((m) => (
-                    <Link to = {`/Recipe/${m.strMeal}`} >
-                        <img className = 'recipeItem' src = {m.strMealThumb}></img>
-                    </Link>
-                    
-                ))}
-            </div>
-           
-        </div>
+        );
+    }
 
+    const NotFound = () =>{
+        return(
+        <div className="flexBoxContainer column">
+            <h1>404 No results found</h1>
+            <br/>
+            <br/>
+            <br/>
+            <Link to = '/SeachRecpie' style = {{textDecoration: 'underline'}}>
+                Click here to go back
+            </Link>
+        </div>
+        )
+    }
+
+
+
+    return ( 
+        <>
+            {empty ? <NotFound/> : <TotalResults/>}
+        </>
         );
 }
 export default MealDisplayTypeFood;

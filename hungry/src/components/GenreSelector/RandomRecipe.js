@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios'; 
 import firebase from '../Firebase';
 
@@ -12,10 +12,20 @@ const Recipe = () => {
  
     const [showResults, setShowResults] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [favoriteBoolean, setFavoriteBoolean] = useState(false);
+    const [title, setTitle] = useState('Favorite');
 
+    const [fav,setFav] = useState([]);
 
+    useEffect(() => {
+        db.collection(`${auth.currentUser.displayName}'s--Favs`)
+        .onSnapshot((querySnapshot) => {
+          setFav(querySnapshot.docs);
+        });
+    }, []);
 
     const ApiCall = async() => {
+        setFavoriteBoolean(false);
         setShowButton(true);
         setShowResults(true);
         setPath(await getAxios());
@@ -23,10 +33,20 @@ const Recipe = () => {
     
     const handleFav = () =>{
         if (path.data.meals[0].strMeal != null){
-            db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
-                id: path.data.meals[0].idMeal,
-                name: path.data.meals[0].strMeal
+            if(title === 'Favorite'){   
+                db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
+                    id: path.data.meals[0].idMeal,
+                    name: path.data.meals[0].strMeal,
+                    photo: path.data.meals[0].strMealThumb,
+                    favorite: true
+                });
+            }
+            else{
+                db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).delete().then(() => {
+                    setTitle('Favorite')
+                    setFavoriteBoolean(false);
             });
+            }
         } 
     }
     const handleYoutube = () =>{
@@ -118,11 +138,21 @@ const Recipe = () => {
         );
     }
     const FavButton = () => {
+        fav.map((favz) => {
+            if(favz.data().name === path.data.meals[0].strMeal){
+                setTitle('Unfavorite')
+                setFavoriteBoolean(true);
+            }
+        })
         return (  
             <button className = 'fav' onClick = {()=>handleFav()}><span>Favorite</span></button>
         );
     }
+
+    const Emoji = () => {return(<span>⭐</span>)}
     
+  
+
      
     return (
     <>
@@ -132,7 +162,7 @@ const Recipe = () => {
             </div>
 
              <div className="space " style ={{paddingTop: '3vh', textDecoration: 'underline'}}>
-                <h1>{path.data.meals[0].strMeal}</h1>
+                <h1>{favoriteBoolean ? <Emoji/>: null}{path.data.meals[0].strMeal}</h1>
                 { showButton ? <FavButton /> : null }
             </div> 
           

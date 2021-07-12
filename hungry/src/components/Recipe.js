@@ -16,22 +16,40 @@ const RecipeFinder = () => {
  
     const [showResults, setShowResults] = useState(false);
     const [showButton, setShowButton] = useState(false);
+    const [title, setTitle] = useState('Favorite');
+
+    const [fav,setFav] = useState([]);
+
+    useEffect(() => {
+        db.collection(`${auth.currentUser.displayName}'s--Favs`)
+        .onSnapshot((querySnapshot) => {
+          setFav(querySnapshot.docs);
+        });
+    }, []);
 
 
+    
 
     const ApiCall = async() => {
         setShowButton(true);
         setShowResults(true);
         setPath(await getAxios());
     }
-    
+
+
     const handleFav = () =>{
         if (path.data.meals[0].strMeal != null){
-            db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
-                id: path.data.meals[0].idMeal,
-                name: path.data.meals[0].strMeal,
-                photo: path.data.meals[0].strMealThumb
-            });
+            if(title === 'Favorite'){   
+                db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).set({
+                    id: path.data.meals[0].idMeal,
+                    name: path.data.meals[0].strMeal,
+                    photo: path.data.meals[0].strMealThumb,
+                    favorite: true
+                });
+            }
+            else{
+                db.collection(`${auth.currentUser.displayName}'s--Favs`).doc(`${path.data.meals[0].strMeal}`).delete().then(() => {setTitle('Favorite')});
+            }
         } 
     }
     const handleYoutube = () =>{
@@ -123,22 +141,40 @@ const RecipeFinder = () => {
         );
     }
     const FavButton = () => {
+        fav.map((favz) => {
+            if(favz.data().name === path.data.meals[0].strMeal){
+                setTitle('Unfavorite')
+            }
+        })
+
         return (  
-            <button className = 'fav' onClick = {()=>handleFav()}><span>Favorite</span></button>
+            <button className = 'fav' onClick = {()=>handleFav()}><span>{title}</span></button>
         );
     }
 
     useEffect(() => {
         ApiCall();
     }, [])
-    
+
+    const Emoji = () => {
+        
+        if (title === 'Unfavorite'){
+            return(<span>⭐</span>)
+        }
+        else{
+            return (null);
+        }
+  
+    }
+
+
      
     return (
     <>
         <div className="flexBoxContainer column" >
 
              <div className="space " style ={{textDecoration: 'underline'}}>
-                <h1>{path.data.meals[0].strMeal}</h1>
+                <h1><Emoji/>{path.data.meals[0].strMeal}</h1>
                 <FavButton />
             </div> 
           

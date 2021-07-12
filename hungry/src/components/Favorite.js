@@ -17,7 +17,6 @@ const Favorite = () => {
         .onSnapshot((querySnapshot) => {
           setFav(querySnapshot.docs);
         });
-        console.log(fav);
     }, []);
 
     return ( 
