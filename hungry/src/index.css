@@ -1,7 +1,5 @@
 html{
   background-color: white;
-  /*color is #FF6D00*/
-  /* overflow: hidden; */
   font-family: Merriweather;
  
 }
@@ -19,6 +17,12 @@ a{
   border: 10px solid;
   border-color: #FF6D00;
   height: 100%;
+}
+.homeText{
+  font-size: 1.5rem;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border-bottom: 5px solid #FF6D00;
 }
 
 .flexBoxContainer{
@@ -60,6 +64,7 @@ a{
   height: 500px;
   width: 500px;
 }
+
 h1 {
   font-size: 3rem
 }

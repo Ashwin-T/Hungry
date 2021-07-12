@@ -1,6 +1,6 @@
 import firebase from '../Firebase';
 import 'firebase/auth';
-import logo from './Logo.PNG';
+import logo from '../Logo.PNG';
 import React from 'react';
 
 
