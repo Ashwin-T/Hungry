@@ -12,7 +12,7 @@ const Genre = () => {
     }
     const searchMaps = ()=>{
         if (genre != null) {
-            let url = `https://www.google.com/maps/search/${genre}`;
+            let url = `https://www.google.com/maps/search/${genre}%20Food`;
             window.open(url,'_blank');
         }
 

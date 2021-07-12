@@ -4,7 +4,7 @@ html{
  
 }
 *{
-  font-family: Merriweather;
+  font-family: Roboto;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,6 +23,7 @@ a{
   margin-left: 10vw;
   margin-right: 10vw;
   border-bottom: 5px solid #FF6D00;
+  margin-top: -10vh;
 }
 
 .flexBoxContainer{
@@ -254,7 +255,7 @@ h3{
   margin-top: 1.5vh;
 }
 .form{
-  margin-top: 10vh
+  margin-top: 5vh
 }
 .recipeItem{
   height: 20.75vw;

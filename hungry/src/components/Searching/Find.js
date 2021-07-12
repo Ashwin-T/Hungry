@@ -35,7 +35,7 @@ const Find = () => {
                 <button onClick = {()=>handleSubmit(`${id}`)} className="fav" style = {{  marginLeft: '0.75vw'}}>Submit</button>
                     
             </form>
-            
+            <h1 style = {{marginTop: '4vh'}}>or</h1>
             <form className="form">
                 <label >
                     <h2 style = {{color: '#FF6D00'}}>Food Type</h2>
