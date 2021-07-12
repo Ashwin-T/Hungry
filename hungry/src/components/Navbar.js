@@ -27,7 +27,7 @@ const Navz = () => {
               <Link to = '/RandomRecipe'>Recipe</Link>
             </li>
             <li>
-              <Link to = '/RandomGenre'>Cusine Type</Link>
+              <Link to = '/RandomGenre'>Cuisine Type</Link>
             </li>
           </ul>
         </li>
