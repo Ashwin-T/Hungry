@@ -31,16 +31,16 @@ const MealDisplayType = () => {
     return ( 
         
         <div>
-            <h3>Showing Recipes for: {mealType}</h3>
-            {mealz.map((m) => (
-                <div>
+            <div classname = 'flexBoxContainer'>
+                <h3 className = 'columnz'>Showing Recipes for: {mealType}</h3>
+            </div>
+            <div classname  = 'flexBoxContainer column'>
+                {mealz.map((m) => (
                     <Link to = {`/Recipe/${m.strMeal}`} >
-                        <div>{m.strMeal}</div>
-                        <img src = {m.strMealThumb}></img>
+                        <img className = 'recipeItem'src = {m.strMealThumb}></img>
                     </Link>
-                </div>
-            ))}
-           
+                ))}
+           </div>
         </div>
 
         );

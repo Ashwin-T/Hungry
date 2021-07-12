@@ -9,6 +9,7 @@ const Favorite = () => {
     const db = firebase.firestore();
     const auth = firebase.auth();
 
+
     const [fav,setFav] = useState([]);
 
     useEffect(() => {
@@ -19,17 +20,22 @@ const Favorite = () => {
         console.log(fav);
     }, []);
 
-    return (  
-        <div>
-        <ul>
-          {fav.map((favz) => (
-            <Link to = {`/Recipe/${favz.data().name}`}>
-                <li> {favz.data().name} </li>
-                <img src = {favz.data().photo}></img>
-            </Link>
-          ))}
-        </ul>
-      </div>
+    return ( 
+      <>
+       <div>
+            <div classname = 'flexBoxContainer'>
+                <h3 className = 'columnz'>Showing {auth.currentUser.displayName.split(' ')[0]}'s Favorites</h3>
+            </div>
+            <div classname  = 'flexBoxContainer column'>
+                {fav.map((favz) => (
+                    <Link to = {`/Recipe/${favz.data().name}`} >
+                        <img className = 'recipeItem' src = {favz.data().photo}></img>
+                    </Link>
+                ))}
+           </div>
+        </div>
+    </>
+
     );
 }
  

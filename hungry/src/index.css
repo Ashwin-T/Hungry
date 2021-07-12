@@ -11,6 +11,10 @@ html{
   padding: 0;
   box-sizing: border-box;
 }
+a{
+  color: black;
+  text-decoration: none;
+}
 .lock{
   border: 10px solid;
   border-color: #FF6D00;
@@ -19,7 +23,6 @@ html{
 
 .flexBoxContainer{
   display:flex;
-  height: 100%;
   flex-wrap: wrap;
 }
 .sign-in {
@@ -39,6 +42,12 @@ html{
   align-items: center;
   text-align: center;
   padding: 125px;
+}
+.columnz{
+  justify-content:center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .row{
   justify-content:center;
@@ -241,4 +250,10 @@ h3{
 }
 .form{
   margin-top: 10vh
+}
+.recipeItem{
+  height: 20.75vw;
+  width: 20.75vw;
+  margin-left: 3.35vw;
+  margin-bottom: 3.35vh;
 }

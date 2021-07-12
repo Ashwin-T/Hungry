@@ -31,7 +31,7 @@ const Genre = () => {
 
     const Buttons = ()=>{
         return(
-            <div className="flexBoxContainer space" style = {{marginTop: '5vh'}}>
+            <div className="flexBoxContainer space " style = {{marginTop: '5vh'}}>
                 <button onClick={()=>searchDoordash()} className = 'buttonz'><span>Dining in? Click here to search Doordash!</span></button>
                 <button onClick={()=>searchMaps()} className = 'buttonz'style = {{marginLeft: '7vh'}}><span>Dining out? Click here to search GMaps!</span></button>
                 <button onClick={()=>searchRecipe()} className = 'buttonz' style = {{marginTop: '7vh'}}><span>Wanna make it? Click here to browse recipes!</span></button>
