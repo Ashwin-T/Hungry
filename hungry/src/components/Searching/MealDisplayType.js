@@ -55,7 +55,7 @@ const MealDisplayType = () => {
     const NotFound = () =>{
         return(
         <div className="flexBoxContainer column">
-            <h1>No Recipes found for {mealType}</h1>
+            <h1>No Recipes found for '{mealType}'</h1>
             <br/>
             <br/>
             <br/>
