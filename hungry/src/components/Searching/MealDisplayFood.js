@@ -53,7 +53,7 @@ const MealDisplayTypeFood = () => {
     const NotFound = () =>{
         return(
         <div className="flexBoxContainer column">
-            <h1>404 No results found</h1>
+            <h1>No Recipes found for {mealFood}</h1>
             <br/>
             <br/>
             <br/>
