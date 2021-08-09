@@ -5,6 +5,9 @@ import { useParams } from 'react-router';
 
 const RecipeFinder = () => {
     
+
+    const [runable, setRunable] = useState(true);
+
     const db = firebase.firestore();
     const auth = firebase.auth();
     const {mealName} = useParams();
@@ -25,9 +28,17 @@ const RecipeFinder = () => {
         .onSnapshot((querySnapshot) => {
           setFav(querySnapshot.docs);
         });
+
+        if (window.innerWidth < 510){
+            setRunable(false);
+        }
+        else{
+            setRunable(true);
+        }
     }, []);
 
 
+    
     
 
     const ApiCall = async() => {
@@ -167,25 +178,26 @@ const RecipeFinder = () => {
   
     }
 
+    const TotalResults = () =>{
+        return(
+            <div className="flexBoxContainer column" >
+                <div className="space " style ={{textDecoration: 'underline'}}>
+                <h1><Emoji/>{path.data.meals[0].strMeal}</h1>
+                <FavButton />
+                </div> 
+            
+            <Results />
+
+        
+            </div>
+        )
+    }
+
 
      
     return (
-    <>
-        <div className="flexBoxContainer column" >
-
-             <div className="space " style ={{textDecoration: 'underline'}}>
-                <h1><Emoji/>{path.data.meals[0].strMeal}</h1>
-                <FavButton />
-            </div> 
-          
-            <Results />
-
-      
-        </div>
-
-       
-
-
+    <>    
+       {runable ? <TotalResults/> : <h1 style = {{textAlign: 'center', marginTop: '40vh'}}>This service is not avaiable for a smaller mobile device. Switch to a larger device to have full access.</h1>}
     </>
     );
 }

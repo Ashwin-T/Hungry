@@ -13,8 +13,8 @@ const SignIn = () => {
       }
 
       return (
-        <div className="flexBoxContainer column lock">
-                <img className="logo" src = {logo} alt = 'logo'></img>
+        <div className="flexBoxContainer column">
+                <img className="logo lock" src = {logo} alt = 'logo'></img>
                 <button className="sign-in" onClick={()=>SignInWithGoogle()}>Sign in with Google</button>
         </div>
       )

@@ -20,16 +20,16 @@ const Source = () => {
                     <Display/>
                 </Route>
                
-                <Route exact path = '/Favorites'>
+                <Route path = '/Favorites'>
                     <Favorite/>
                 </Route>
-                
+    
 
-                <Route exact path = '/RandomGenre'>
+                <Route path = '/RandomGenre'>
                     <Genre/>
                 </Route>
 
-                <Route exact path = '/RandomRecipe'>
+                <Route path = '/RandomRecipe'>
                     <Recipe/>
                 </Route>
 

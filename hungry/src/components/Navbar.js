@@ -16,7 +16,7 @@ const Navz = () => {
     <nav id="main-nav">
       <ul>
         <li>
-          <Link to = '/' ><div style = {{color: '#FF6D00', textDecoration: 'none', fontSize: '1.5rem'}}>Hungry?</div></Link>
+          <Link to = '/' ><div style = {{color: '#FF6D00', textDecoration: 'none', fontSize: '2vh'}}>Hungry?</div></Link>
         </li>
         <li>
           <a href="#">Get Random...

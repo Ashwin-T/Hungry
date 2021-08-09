@@ -4,6 +4,9 @@ import firebase from '../Firebase';
 import {useHistory} from 'react-router-dom'
 
 const Recipe = () => {
+
+    const [runable, setRunable] = useState(true);
+   
     
     const db = firebase.firestore();
     const auth = firebase.auth();
@@ -24,6 +27,13 @@ const Recipe = () => {
         .onSnapshot((querySnapshot) => {
           setFav(querySnapshot.docs);
         });
+
+        if (window.innerWidth < 510){
+            setRunable(false);
+        }
+        else{
+            setRunable(true);
+        }
     }, []);
 
     const ApiCall = async() => {
@@ -31,6 +41,8 @@ const Recipe = () => {
         setShowButton(true);
         setShowResults(true);
         setPath(await getAxios());
+
+       
     }
     
     const handleFav = () =>{
@@ -155,30 +167,37 @@ const Recipe = () => {
     }
 
     const Emoji = () => {return(<span>⭐</span>)}
+
+
+    const TotalResults = ()=>{
+        return(
+
+            <div className="flexBoxContainer column" >
+                <div className="space" >
+                    <button onClick={()=> ApiCall()} className = 'buttonz'> <span>Get Random Recipe 🍽️</span></button>  
+                </div>
+
+                <div className="space " style ={{paddingTop: '3vh', textDecoration: 'underline'}}>
+                    <h1>{favoriteBoolean ? <Emoji/>: null}{path.data.meals[0].strMeal}</h1>
+                    { showButton ? <FavButton /> : null }
+                </div> 
+            
+                { showResults ? <Results /> : null }
+
+      
+            </div>
+        )
+    }
+    
     
   
 
      
     return (
     <>
-        <div className="flexBoxContainer column" >
-             <div className="space" >
-                <button onClick={()=> ApiCall()} className = 'buttonz'> <span>Get Random Recipe 🍽️</span></button>  
-            </div>
-
-             <div className="space " style ={{paddingTop: '3vh', textDecoration: 'underline'}}>
-                <h1>{favoriteBoolean ? <Emoji/>: null}{path.data.meals[0].strMeal}</h1>
-                { showButton ? <FavButton /> : null }
-            </div> 
-          
-             { showResults ? <Results /> : null }
-
-      
-        </div>
-
+        
+        {runable ? <TotalResults/> : <h1 style = {{textAlign: 'center', marginTop: '40vh'}}>This service is not avaiable for a smaller mobile device. Switch to a larger device to have full access.</h1>}
        
-
-
     </>
     );
 }

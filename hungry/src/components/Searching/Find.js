@@ -1,12 +1,24 @@
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 const Find = () => {
     
+
+    const [runable, setRunable] = useState(true);
+
     const [id, setId] = useState(null);
     const [id2, setId2] = useState(null);
 
     const history = useHistory();
     
+    useEffect(() => {
+        if (window.innerWidth < 510){
+            setRunable(false);
+        }
+        else{
+            setRunable(true);
+        }
+    }, []);
+
 
 
     const handleSubmit= idz => { 
@@ -20,10 +32,8 @@ const Find = () => {
            
     }
 
-
-    return ( 
-    <>  
-        <div className="flexBoxContainer column"> 
+    const TotalResults = () =>{
+        return(<div className="flexBoxContainer column"> 
             <h1>Search Recipes By...</h1>
             <form className="form">
                 <label >
@@ -46,7 +56,16 @@ const Find = () => {
                 <button onClick = {()=>handleSubmit2(`${id2}`)} className="fav" style = {{  marginLeft: '0.75vw'}}>Submit</button>
 
             </form> 
-        </div>
+        </div>)
+    }
+
+
+    return ( 
+    <>  
+       
+
+        {runable ? <TotalResults/> : <h1 style = {{textAlign: 'center', marginTop: '40vh'}}>This service is not avaiable for a smaller mobile device. Switch to a larger device to have full access.</h1>}
+
     </>
      );
 }
